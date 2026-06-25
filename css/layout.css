@@ -1,0 +1,46 @@
+/* ─────────────────────────────────────────────
+   layout.css — Structure principale des pages
+   ───────────────────────────────────────────── */
+
+/* ── Zone principale (à droite de la sidebar) ── */
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Barre supérieure ── */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.topbar h1    { font-size: 1.15rem; font-weight: 600; }
+.topbar-sub   { font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+
+/* ── Zone de contenu ── */
+.content {
+  padding: 1.75rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeIn .3s ease-in-out;
+}
+
+/* ── Animation d'entrée de page ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 768px) {
+  .sidebar  { transform: translateX(-100%); }
+  .main     { margin-left: 0; }
+}

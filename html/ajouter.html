@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nouvelle opération — Carnet Familial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/compte-bancaire.png" alt="Carnet" style="width: 45px; height: 32px;" />Carnet</div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item" data-view="dashboard" href="index.html">
+        <img src="../img/tableau-de-bord.png" alt="Tableau de bord" class="nav-icon-img" /> Tableau de bord
+      </a>
+      <a class="nav-item" data-view="add" href="ajouter.html">
+        <img src="../img/plus.png" alt="Ajouter" class="nav-icon-img" /> Ajouter
+      </a>
+      <a class="nav-item" data-view="history" href="historique.html">
+        <img src="../img/historique.png" alt="Historique" class="nav-icon-img" /> Historique
+      </a>
+      <a class="nav-item" data-view="drafts" href="brouillons.html">
+        <img src="../img/brouillon.png" alt="Brouillons" class="nav-icon-img" /> Brouillons
+      </a>
+      <a class="nav-item" data-view="archives" href="archives.html">
+        <img src="../img/archiver.png" alt="Archives" class="nav-icon-img" /> Archives
+      </a>
+      <a class="nav-item" data-view="file" onclick="changeDataFile();return false;" href="#" style="margin-top:auto;color: white;font-size:.8rem;">
+        <img src="../img/calendrier.png" alt="Dossier" class="nav-icon-img" /> Changer de mois
+      </a>
+    </nav>
+
+    <div class="month-selector-wrap">
+      <div id="month-selector"></div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">X</div>
+        <div class="user-info">
+          <p class="user-name">Nom Prénom</p>
+          <p class="user-role">Comptabilité</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Nouvelle Opération</h1>
+        <p class="topbar-sub" id="topbar-date"></p>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="card" style="max-width:600px;margin:0 auto;">
+        <div class="card-header">
+          <h2>Nouvelle opération</h2>
+        </div>
+
+        <form id="add-transaction-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-grid">
+
+            <div class="form-group full">
+              <label class="form-label" for="t-titre">Titre / Description</label>
+              <input type="text" id="t-titre" class="form-input"
+                     placeholder="ex : Courses Carrefour" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="t-montant">Montant (€)</label>
+              <input type="number" step="0.01" id="t-montant" class="form-input"
+                     placeholder="0.00" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="t-date">Date</label>
+              <input type="date" id="t-date" class="form-input" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="t-categorie">Catégorie</label>
+              <select id="t-categorie" class="form-select">
+                <option value="Courses">🛒 Courses</option>
+                <option value="Logement">🏠 Logement (Loyer, EDF…)</option>
+                <option value="Transport">🚗 Transport</option>
+                <option value="Sante">⚕️ Santé</option>
+                <option value="Loisirs">🎉 Loisirs / Vacances</option>
+                <option value="Revenu">💰 Salaire / Revenu</option>
+                <option value="Autre">📦 Autre</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="t-payepar">Payé par</label>
+              <select id="t-payepar" class="form-select">
+                <option value="Maman">Maman</option>
+                <option value="Papa">Papa</option>
+                <option value="Compte Commun">Compte Commun</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label" for="t-type">Type de dépense</label>
+              <select id="t-type" class="form-select">
+                <option value="commun">👫 Commune (50/50)</option>
+                <option value="personnel">👤 Personnelle (100 %)</option>
+                <option value="revenu">⬆️ C'est une rentrée d'argent</option>
+              </select>
+            </div>
+
+            <div class="form-group full inline">
+              <input type="checkbox" id="t-brouillon" />
+              <label for="t-brouillon" style="font-size:.85rem;color:var(--muted);">
+                Enregistrer comme brouillon (ne modifie pas les comptes)
+              </label>
+            </div>
+
+          </div><!-- /form-grid -->
+
+          <div style="display:flex;gap:1rem;margin-top:1rem;">
+            <button type="submit" class="btn btn-primary" style="flex:1;">
+              Ajouter l'opération
+            </button>
+          </div>
+        </form>
+      </div>
+    </div><!-- /content -->
+  </div><!-- /main -->
+
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/actions.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

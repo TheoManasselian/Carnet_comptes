@@ -1,0 +1,50 @@
+/* ─────────────────────────────────────────────
+   variables.css — Reset global + tokens CSS
+   ───────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Couleurs de fond */
+  --bg:       #f4f3ef;
+  --surface:  #ffffff;
+  --border:   #e4e2d9;
+
+  /* Texte */
+  --text:     #181714;
+  --muted:    #8a8880;
+
+  /* Sidebar */
+  --sidebar:  #111110;
+  --sid-text: #c8c6c0;
+  --sid-mut:  #606058;
+
+  /* Couleurs sémantiques */
+  --blue:     #3b82f6;
+  --green:    #22c55e;
+  --yellow:   #eab308;
+  --red:      #ef4444;
+
+  /* Layout */
+  --sidebar-w: 220px;
+
+  /* Typographie */
+  --font: 'Geist', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}

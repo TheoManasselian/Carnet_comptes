@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord — Carnet Familial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/compte-bancaire.png" alt="Carnet" style="width: 45px; height: 32px;" />Carnet</div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item" data-view="dashboard" href="index.html">
+        <img src="../img/tableau-de-bord.png" alt="Tableau de bord" class="nav-icon-img" /> Tableau de bord
+      </a>
+      <a class="nav-item" data-view="add" href="ajouter.html">
+        <img src="../img/plus.png" alt="Ajouter" class="nav-icon-img" /> Ajouter
+      </a>
+      <a class="nav-item" data-view="history" href="historique.html">
+        <img src="../img/historique.png" alt="Historique" class="nav-icon-img" /> Historique
+      </a>
+      <a class="nav-item" data-view="drafts" href="brouillons.html">
+        <img src="../img/brouillon.png" alt="Brouillons" class="nav-icon-img" /> Brouillons
+      </a>
+      <a class="nav-item" data-view="archives" href="archives.html">
+        <img src="../img/archiver.png" alt="Archives" class="nav-icon-img" /> Archives
+      </a>
+      <a class="nav-item" data-view="file" onclick="changeDataFile();return false;" href="#" style="margin-top:auto;color: white;font-size:.8rem;">
+        <img src="../img/calendrier.png" alt="Dossier" class="nav-icon-img" /> Changer de mois
+      </a>
+    </nav>
+
+    <div class="month-selector-wrap">
+      <div id="month-selector"></div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">X</div>
+        <div class="user-info">
+          <p class="user-name">Nom Prénom</p>
+          <p class="user-role">Comptabilité</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Tableau de bord</h1>
+        <p class="topbar-sub" id="topbar-date"></p>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- KPI -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <p class="kpi-label">Solde global</p>
+            <span class="kpi-icon blue"><img src="../img/argent.png" alt="Argent" class="nav-icon-img"/></span>
+          </div>
+          <p class="kpi-value" id="kpi-solde">—</p>
+          <p class="kpi-desc">Argent disponible</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <p class="kpi-label">Dépenses du mois</p>
+            <span class="kpi-icon red"><img src="../img/diminuer.png" alt="Diminuer" class="nav-icon-img" /></span>
+          </div>
+          <p class="kpi-value" id="kpi-depenses">—</p>
+          <p class="kpi-desc">Toutes dépenses confondues</p>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-top">
+            <p class="kpi-label">Revenus du mois</p>
+            <span class="kpi-icon green"><img src="../img/augmenter.png" alt="Augmenter" class="nav-icon-img" /></span>
+          </div>
+          <p class="kpi-value" id="kpi-revenus">—</p>
+          <p class="kpi-desc">Entrées d'argent</p>
+        </div>
+      </div>
+
+      <!-- Balance familiale -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Balance Familiale (Dépenses communes)</h2>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:1rem;">
+          <div>
+            <p style="font-size:.85rem;color:var(--muted)">Maman a payé</p>
+            <p style="font-weight:600;font-size:1.1rem" id="bal-maman-paye">—</p>
+          </div>
+          <div style="text-align:right;">
+            <p style="font-size:.85rem;color:var(--muted)">Papa a payé</p>
+            <p style="font-weight:600;font-size:1.1rem" id="bal-papa-paye">—</p>
+          </div>
+        </div>
+        <div class="balance-box" id="balance-result-box"></div>
+      </div>
+
+      <!-- Dernières opérations -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Dernières opérations</h2>
+          <a class="btn btn-outline"
+             style="padding:.3rem .6rem;font-size:.75rem;"
+             href="historique.html">Voir tout</a>
+        </div>
+        <div class="transaction-list" id="dashboard-recent-list"></div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+
+  <!-- Scripts (ordre de chargement requis) -->
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/actions.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>

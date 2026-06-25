@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brouillons — Carnet Familial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/sidebar.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><img src="../img/compte-bancaire.png" alt="Carnet" style="width: 45px; height: 32px;" />Carnet</div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item" data-view="dashboard" href="index.html">
+        <img src="../img/tableau-de-bord.png" alt="Tableau de bord" class="nav-icon-img" /> Tableau de bord
+      </a>
+      <a class="nav-item" data-view="add" href="ajouter.html">
+        <img src="../img/plus.png" alt="Ajouter" class="nav-icon-img" /> Ajouter
+      </a>
+      <a class="nav-item" data-view="history" href="historique.html">
+        <img src="../img/historique.png" alt="Historique" class="nav-icon-img" /> Historique
+      </a>
+      <a class="nav-item" data-view="drafts" href="brouillons.html">
+        <img src="../img/brouillon.png" alt="Brouillons" class="nav-icon-img" /> Brouillons
+      </a>
+      <a class="nav-item" data-view="archives" href="archives.html">
+        <img src="../img/archiver.png" alt="Archives" class="nav-icon-img" /> Archives
+      </a>
+      <a class="nav-item" data-view="file" onclick="changeDataFile();return false;" href="#" style="margin-top:auto;color: white;font-size:.8rem;">
+        <img src="../img/calendrier.png" alt="Dossier" class="nav-icon-img" /> Changer de mois
+      </a>
+    </nav>
+
+    <div class="month-selector-wrap">
+      <div id="month-selector"></div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="user-avatar">X</div>
+        <div class="user-info">
+          <p class="user-name">Nom Prénom</p>
+          <p class="user-role">Comptabilité</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Brouillons</h1>
+        <p class="topbar-sub" id="topbar-date"></p>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="card">
+        <div class="card-header">
+          <h2>Feuilles Brouillons</h2>
+        </div>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem;">
+          Ces opérations n'impactent pas les soldes globaux tant qu'elles ne sont pas validées.
+        </p>
+        <div class="transaction-list" id="drafts-list"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/actions.js"></script>
+  <script src="../js/main.js"></script>
+
+</body>
+</html>
